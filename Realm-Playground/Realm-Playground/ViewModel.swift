@@ -17,10 +17,11 @@ import StitchRemoteMongoDBService
 class ViewModel: ObservableObject {
     
     @Published var result: String = ""
+    @Published var counter: Int = 0
 
     let stitch = Stitch.defaultAppClient!
     let mongoClient: RemoteMongoClient
-    let coll: RemoteMongoCollection<MyModel>
+    let collection: RemoteMongoCollection<MyModel>
     
     var myModel: MyModel?
     
@@ -32,28 +33,29 @@ class ViewModel: ObservableObject {
             fromFactory: remoteMongoClientFactory, withName: Constants.ATLAS_SERVICE_NAME
         )
         // Get the RemoteCollection
-        self.coll = mongoClient.db(Constants.DATABASE).collection(Constants.COLLECTION, withCollectionType: MyModel.self)
+        self.collection = mongoClient.db(Constants.DATABASE).collection(Constants.COLLECTION, withCollectionType: MyModel.self)
         // Define user credentials
-        let credential = UserPasswordCredential.init(withUsername: "demo@example.com", withPassword: "demo123")
+        let credential = UserPasswordCredential.init(withUsername: Constants.STITCH_USERNAME, withPassword: Constants.STITCH_PASSWORD)
         // Login with the credentials
         stitch.auth.login(withCredential: credential) { result in
           switch result {
           case .success:
               print("Successfully logged in")
-              self.myChangeStream = MyChangeStream(collection: self.coll)
+              self.myChangeStream = MyChangeStream(collection: self.collection, viewModel: self)
           case .failure(let error):
               print("Error logging in with email/password auth: \(error)")
           }
         }
     }
     
-    func mongoRead() {
-        coll.findOne() { result in
+    func mongoRead(value: String) {
+        collection.findOne(["greeting": value] as Document) { result in
             switch result {
             case .success(let doc):
-                self.myModel = doc!
+                self.myModel = doc
                 DispatchQueue.main.async {
-                    self.result = self.myModel?.hello ?? "Default"
+                    self.result = String(describing: self.myModel?.random)
+                    print("\(self.result))")
                 }
             case .failure(let e):
                 fatalError(e.localizedDescription)
@@ -61,13 +63,12 @@ class ViewModel: ObservableObject {
         }
     }
     
-    func mongoWrite() {
-        print("Write Stub")
+    func mongoWrite(value: String) {
         let newDoc = MyModel(_id: ObjectId(),
-                             hello: "world",
-                             test: 7
+                             greeting: value,
+                             random: Int.random(in: 0 ..< 10)
         )
-        coll.insertOne(newDoc) { result in
+        collection.insertOne(newDoc) { result in
             switch result {
             case .success(let doc):
                 print("Result: \(doc)")

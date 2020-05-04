@@ -13,9 +13,8 @@ import MongoSwift
 struct MyModel: Codable {
     
     var _id: ObjectId
-    var hello: String? = "Default"
-    var test: Int?
+    var greeting: String? = "Default"
+    var random: Int?
     
 
 }
-

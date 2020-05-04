@@ -14,10 +14,12 @@ class MyChangeStream: ChangeStreamDelegate {
     typealias DocumentT = MyModel
     var changeStreamSession: ChangeStreamSession<MyModel>?
     
+    let viewModel: ViewModel
+    
     let collection: RemoteMongoCollection<MyModel>
     
-    init(collection: RemoteMongoCollection<MyModel>) {
-
+    init(collection: RemoteMongoCollection<MyModel>, viewModel: ViewModel) {
+        self.viewModel = viewModel
         self.collection = collection
         // Add listener
         addWatchToCollection()
@@ -27,7 +29,7 @@ class MyChangeStream: ChangeStreamDelegate {
     func addWatchToCollection() {
         do {
             NSLog("Watching for changes");
-            changeStreamSession = try collection.watch(delegate: self);
+            changeStreamSession = try collection.watch(matchFilter: ["fullDocument.greeting": "World"] as Document, delegate: self);
         } catch {
             NSLog("Stitch error: \(error)");
         }
@@ -35,6 +37,10 @@ class MyChangeStream: ChangeStreamDelegate {
     
     func didReceive(event: ChangeEvent<DocumentT>) {
         NSLog("Event Received!")
+        DispatchQueue.main.async {
+            self.viewModel.counter += 1
+        }
+        print(viewModel.counter)
         
     }
     

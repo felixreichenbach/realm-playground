@@ -1,0 +1,113 @@
+PODS:
+  - mongo-embedded-c-driver (1.13.0-4.0.4)
+  - mongo_embedded (4.0.4)
+  - mongoc_embedded (4.0.4):
+    - mongo-embedded-c-driver (~> 1.13.0-4.0.4)
+    - mongo_embedded (~> 4.0.4)
+  - MongoMobile (0.1.0):
+    - mongo_embedded (~> 4.0.4)
+    - mongoc_embedded (~> 4.0.4)
+    - MongoSwift (~> 0.1.0)
+  - MongoSwift (0.1.0):
+    - mongo-embedded-c-driver (~> 1.13.0-4.0.0)
+  - StitchAWSService (6.4.0):
+    - StitchCore (= 6.4.0)
+    - StitchCoreAWSService (= 6.4.0)
+  - StitchCore (6.4.0):
+    - StitchCoreSDK (= 6.4.0)
+  - StitchCoreAWSService (6.4.0):
+    - StitchCoreSDK (= 6.4.0)
+  - StitchCoreFCMService (6.4.0):
+    - StitchCoreSDK (= 6.4.0)
+  - StitchCoreHTTPService (6.4.0):
+    - StitchCoreSDK (= 6.4.0)
+  - StitchCoreLocalMongoDBService (6.4.0):
+    - MongoMobile (= 0.1.0)
+    - StitchCoreSDK (= 6.4.0)
+  - StitchCoreRemoteMongoDBService (6.4.0):
+    - StitchCoreLocalMongoDBService (= 6.4.0)
+    - StitchCoreSDK (= 6.4.0)
+  - StitchCoreSDK (6.4.0):
+    - MongoSwift (= 0.1.0)
+  - StitchCoreTwilioService (6.4.0):
+    - StitchCoreSDK (= 6.4.0)
+  - StitchFCMService (6.4.0):
+    - StitchCore (= 6.4.0)
+    - StitchCoreFCMService (= 6.4.0)
+  - StitchHTTPService (6.4.0):
+    - StitchCore (= 6.4.0)
+    - StitchCoreHTTPService (= 6.4.0)
+  - StitchRemoteMongoDBService (6.4.0):
+    - StitchCore (= 6.4.0)
+    - StitchCoreRemoteMongoDBService (= 6.4.0)
+  - StitchSDK (6.4.0):
+    - StitchSDK/StitchSDK (= 6.4.0)
+  - StitchSDK/StitchAWSService (6.4.0):
+    - StitchAWSService (= 6.4.0)
+  - StitchSDK/StitchFCMService (6.4.0):
+    - StitchFCMService (= 6.4.0)
+  - StitchSDK/StitchHTTPService (6.4.0):
+    - StitchHTTPService (= 6.4.0)
+  - StitchSDK/StitchRemoteMongoDBService (6.4.0):
+    - StitchRemoteMongoDBService (= 6.4.0)
+  - StitchSDK/StitchSDK (6.4.0):
+    - StitchSDK/StitchRemoteMongoDBService
+  - StitchSDK/StitchTwilioService (6.4.0):
+    - StitchTwilioService (= 6.4.0)
+  - StitchTwilioService (6.4.0):
+    - StitchCore (= 6.4.0)
+    - StitchCoreTwilioService (= 6.4.0)
+
+DEPENDENCIES:
+  - StitchSDK (= 6.4.0)
+  - StitchSDK/StitchAWSService (= 6.4.0)
+  - StitchSDK/StitchFCMService (= 6.4.0)
+  - StitchSDK/StitchHTTPService (= 6.4.0)
+  - StitchSDK/StitchTwilioService (= 6.4.0)
+
+SPEC REPOS:
+  trunk:
+    - mongo-embedded-c-driver
+    - mongo_embedded
+    - mongoc_embedded
+    - MongoMobile
+    - MongoSwift
+    - StitchAWSService
+    - StitchCore
+    - StitchCoreAWSService
+    - StitchCoreFCMService
+    - StitchCoreHTTPService
+    - StitchCoreLocalMongoDBService
+    - StitchCoreRemoteMongoDBService
+    - StitchCoreSDK
+    - StitchCoreTwilioService
+    - StitchFCMService
+    - StitchHTTPService
+    - StitchRemoteMongoDBService
+    - StitchSDK
+    - StitchTwilioService
+
+SPEC CHECKSUMS:
+  mongo-embedded-c-driver: b46360baa15fc142baae80628822f26663220bde
+  mongo_embedded: e413134eb6b60544e7278add03007f8fe384a00c
+  mongoc_embedded: 41aadbb756b07070d6f0471192a84750cb42c580
+  MongoMobile: 988e8d2fd322761d6358570dde8a2b3d44801823
+  MongoSwift: e20f86eae1beb06bbba49c2d73bb570961cc4c85
+  StitchAWSService: d2d2d5dd0fcc2c162ec5502b240639efe44e4d84
+  StitchCore: 344f59b617dd5be8c32f0a2fdef39fb96591fc33
+  StitchCoreAWSService: 22c10a8f81c12e39adfce8151cc10d9606d9fa14
+  StitchCoreFCMService: 421820058b563116329ec07609923c8aa34bf86e
+  StitchCoreHTTPService: 970bc58ec1f847688b5d2659694f0c923e01355e
+  StitchCoreLocalMongoDBService: 26c339ea689d9633b33e266274406e7b4c3f2786
+  StitchCoreRemoteMongoDBService: e328908dde887cb3a9e3465793b37b69cb19c0e7
+  StitchCoreSDK: 4c4b847470229535a66f8ba6b2911c2eafc0d866
+  StitchCoreTwilioService: 1a59388e48a1f0023dc571b4e25ed138f7f6521f
+  StitchFCMService: 0a79cb5d7b4c7052a8f26a8d3a1f5ef627cfe7a3
+  StitchHTTPService: 191d8065500bae147bdca5bde7cf771d559a9c18
+  StitchRemoteMongoDBService: f5befbafb01720c4d7193e054907fa0ebff569f0
+  StitchSDK: 198397b6400c1fdd58e3e78300fe60374c700fe9
+  StitchTwilioService: 01c6a725dca3ea904feb33428b235a39695bfe6b
+
+PODFILE CHECKSUM: 9b720e437a57501f70011dd2f4d9f4231bf50d35
+
+COCOAPODS: 1.9.1
